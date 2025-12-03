@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Espacio de Salud Periodontal - Fisioterapia Oral</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- VARIABLES Y ESTILOS BASE --- */
+        :root {
+            --color-principal: #87CEEB; /* Azul Cielo */
+            --color-secundario: #0077CC; /* Azul profundo */
+            --color-fondo-claro: #F9F9FC;
+            --color-texto-oscuro: #333333;
+            --color-texto-claro: #FFFFFF;
+            --sombra-suave: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --transicion: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --fuente-titulo: 'Poppins', sans-serif;
+            --fuente-cuerpo: 'Roboto', sans-serif;
+        }
+
+        body {
+            font-family: var(--fuente-cuerpo);
+            color: var(--color-texto-oscuro);
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-fondo-claro);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .contenedor {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: var(--fuente-titulo);
+            color: var(--color-secundario);
+            font-weight: 600;
+        }
+
+        /* Títulos Grandes Modificados */
+        h2.titulo-grande {
+            font-size: 2.8em;
+            text-align: center;
+            border-left: none; 
+            margin-bottom: 40px;
+            line-height: 1.2;
+        }
+
+        h2.titulo-dinamico {
+            font-size: 2.8em;
+            text-align: center;
+            background: linear-gradient(90deg, var(--color-secundario), var(--color-principal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: brillo 5s infinite;
+        }
+
+        @keyframes brillo {
+            0% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(10deg); }
+            100% { filter: hue-rotate(0deg); }
+        }
+
+        strong {
+            color: var(--color-secundario);
+            font-weight: 600;
+        }
+
+        /* --- NAVBAR --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-links { display: flex; gap: 15px; }
+
+        .nav-btn {
+            text-decoration: none;
+            color: var(--color-texto-oscuro);
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: all var(--transicion);
+            border: 1px solid transparent;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--color-principal);
+            color: var(--color-texto-claro);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn.destacado {
+            border: 1px solid var(--color-principal);
+            color: var(--color-secundario);
+        }
+
+        /* --- BOTONES --- */
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            transition: all var(--transicion);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-principal {
+            background: linear-gradient(135deg, var(--color-principal) 0%, #4FA3D1 100%);
+            color: var(--color-texto-claro);
+        }
+        .btn-principal:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(135, 206, 235, 0.5);
+        }
+        .btn-secundario {
+            background-color: #FFF;
+            color: var(--color-secundario);
+            border: 1px solid #EEE;
+        }
+        .btn-secundario:hover { transform: translateY(-3px); border-color: var(--color-principal); }
+
+        /* --- HERO --- */
+        #inicio {
+            background: linear-gradient(135deg, #EBF8FF 0%, #FFFFFF 100%);
+            padding: 80px 20px;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+        .hero-layout { display: flex; align-items: center; gap: 50px; }
+        .hero-text { flex: 1; }
+        .hero-image-container { flex: 1; display: flex; justify-content: center; }
+        .hero-image-container img {
+            width: 100%; max-width: 500px; border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(135, 206, 235, 0.3);
+            transition: transform var(--transicion);
+        }
+        .hero-image-container img:hover { transform: scale(1.02); }
+        #inicio h1 { font-size: 3.5em; line-height: 1.2; margin-bottom: 25px; }
+
+        /* --- CARDS GRID --- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .card {
+            background-color: #FFF;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--sombra-suave);
+            transition: transform var(--transicion);
+            border: 1px solid #F0F0F0;
+        }
+        .card:hover { transform: translateY(-8px); }
+        
+        .card.centrado-total {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* --- TESTIMONIOS CARRUSEL --- */
+        .carrusel-contenedor {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 30px;
+            padding-bottom: 40px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .carrusel-contenedor::-webkit-scrollbar { display: none; }
+        
+        .testimonio-card {
+            flex: 0 0 350px;
+            scroll-snap-align: center;
+            background: #FFF;
+            padding: 40px 30px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            text-align: center;
+            position: relative;
+            border-top: 5px solid var(--color-principal);
+            transition: transform 0.3s;
+        }
+        .testimonio-card:hover { transform: translateY(-5px); }
+        
+        .testimonio-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 3px solid var(--color-principal);
+        }
+        
+        .testimonio-texto {
+            font-style: italic;
+            color: #555;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+        .testimonio-nombre {
+            font-weight: 700;
+            color: var(--color-secundario);
+            font-size: 1.1em;
+        }
+
+        /* --- TABS --- */
+        .tabs-nav {
+            display: flex; flex-wrap: wrap; border-bottom: 2px solid #EEE;
+            margin-bottom: 30px; justify-content: center; gap: 10px;
+        }
+        .tab-btn, .sub-tab-btn {
+            background: transparent; border: none; padding: 12px 25px;
+            font-size: 1em; cursor: pointer; color: #777;
+            border-radius: 25px; transition: all 0.3s;
+        }
+        .tab-btn.active, .sub-tab-btn.active {
+            background-color: var(--color-principal); color: #FFF;
+            font-weight: 600; box-shadow: 0 4px 10px rgba(135, 206, 235, 0.4);
+        }
+        .tab-pane { display: none; animation: fadeIn 0.6s ease; }
+        .tab-pane.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- VIDEO & IMAGENES DINAMICAS --- */
+        .video-responsive {
+            width: 100%; 
+            /* Max-width 100% para videos grandes */
+            max-width: 100%; 
+            margin: 30px auto;
+            position: relative; padding-bottom: 56.25%; /* Ratio 16:9 Standard */
+            height: 0; overflow: hidden;
+            border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .video-responsive iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        .dynamic-img {
+            width: 100%; border-radius: 15px; margin: 20px 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+        .dynamic-img:hover { transform: scale(1.03); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+
+        /* --- PRODUCTOS --- */
+        .producto-lista { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .producto-item {
+            background: #FFF; padding: 25px; border-radius: 15px;
+            border-left: 5px solid var(--color-principal);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.3s;
+        }
+        .producto-item:hover { transform: translateY(-5px); }
+        .producto-item img {
+            width: 100%; max-height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 15px;
+        }
+
+        /* --- CONTACTO --- */
+        .contacto-item { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; font-size: 1.1em; }
+        .contacto-icono { font-size: 1.5em; color: var(--color-principal); }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero-layout { flex-direction: column-reverse; text-align: center; }
+            .btn-container { justify-content: center; }
+            #inicio h1 { font-size: 2.5em; }
+            h2.titulo-grande { font-size: 2em; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="contenedor" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px;">
+            <div style="font-size: 1.5em; font-weight: 700; color: var(--color-secundario); letter-spacing: -0.5px;">
+                Salud Periodontal
+            </div>
+            <nav class="nav-links">
+                <a href="#inicio" class="nav-btn">Inicio</a>
+                <a href="#herramientas" class="nav-btn destacado">Herramientas</a>
+                <a href="#contacto" class="nav-btn">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="inicio">
+        <div class="contenedor hero-layout">
+            <div class="hero-text">
+                <h1>Bienvenido a tu Espacio de Salud Periodontal</h1>
+                <p>Aquí creemos que cada paciente merece ser <strong>escuchado</strong>, <strong>comprendido</strong> y <strong>acompañado</strong>. Nuestro objetivo es ayudarte a recuperar la salud de tus encías con herramientas claras, visuales y fáciles de aplicar.</p>
+                
+                <div class="btn-container">
+                    <a href="#herramientas" class="btn btn-principal">Explorar Herramientas</a>
+                    <button class="btn btn-secundario" onclick="abrirChatIA()">Hablar con la IA</button>
+                    <a href="https://wa.me/qr/GTII534MCB24M1" class="btn btn-principal" style="background: var(--color-secundario);" target="_blank">Agendar Cita</a>
+                    <a href="#testimonios" class="btn btn-secundario" style="border-color: #FF9800; color: #E65100;">⭐ Ver Historias de Éxito</a>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bienvenida Salud Periodontal">
+            </div>
+        </div>
+    </section>
+
+    <section id="objetivos" class="contenedor">
+        <h2 class="titulo-grande">🎯 Objetivo del Sitio Web</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>Comprender</h3>
+                <p>Comprende tu diagnóstico de forma clara y visual para entender mejor tu tratamiento.</p>
+            </div>
+            <div class="card">
+                <h3>Guías Personalizadas</h3>
+                <p>Accede a guías de fisioterapia oral adaptadas a tus necesidades específicas.</p>
+            </div>
+            <div class="card">
+                <h3>Recursos Offline</h3>
+                <p>Descarga videos e infografías para usarlas sin internet en cualquier momento.</p>
+            </div>
+            <div class="card centrado-total">
+                <h3>Apoyo 24/7</h3>
+                <p>Resuelve dudas al instante con IA especializada en salud periodontal.</p>
+                <button class="btn btn-principal" onclick="abrirChatIA()" style="padding: 10px 20px; margin-top: 10px;">Chat de Ayuda</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="fisioterapia" style="background-color: #FFF; padding: 60px 0;">
+        <div class="contenedor">
+            <h2 class="titulo-grande">Beneficios de la Fisioterapia Oral</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 40px; margin-top: 30px;">
+                <div style="flex: 1; min-width: 300px;">
+                    <ul style="list-style: none; padding: 0; font-size: 1.1em;">
+                        <li style="margin-bottom: 15px;">✅ Controlar la <strong>inflamación</strong></li>
+                        <li style="margin-bottom: 15px;">🩸 Reducir el <strong>sangrado</strong> y sensibilidad</li>
+                        <li style="margin-bottom: 15px;">🔄 Mejorar la <strong>circulación</strong></li>
+                        <li style="margin-bottom: 15px;">💪 Reforzar tu <strong>técnica de higiene</strong></li>
+                        <li style="margin-bottom: 15px;">⬇️ Disminuir <strong>dolor</strong></li>
+                    </ul>
+                </div>
+                <div style="flex: 1; min-width: 300px; text-align: center;">
+                    <div class="video-responsive">
+                        <iframe src="https://www.youtube.com/embed/S2ruZph0B4g" title="Higiene oral" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="herramientas" class="contenedor">
+        <h2 class="titulo-dinamico">🔎 Explorar las Herramientas</h2>
+        
+        <div class="tabs-container">
+            <div class="tabs-nav" id="main-tabs-nav">
+                <button class="tab-btn active" data-tab="tablero1">📚 1. Técnicas</button>
+                <button class="tab-btn" data-tab="tablero2">🧰 2. Recursos</button>
+                <button class="tab-btn" data-tab="tablero3">🎥 3. Videoteca</button>
+            </div>
+
+            <div class="tabs-content" id="main-tabs-content">
+                
+                <div id="tablero1" class="tab-pane active">
+                    <div class="tabs-nav" id="sub-tabs-nav-1">
+                        <button class="sub-tab-btn active" data-sub-tab="sub1-edad">Edad</button>
+                        <button class="sub-tab-btn" data-sub-tab="sub1-metodos">Métodos</button>
+                        <button class="sub-tab-btn" data-sub-tab="sub1-hilo">Hilo</button>
+                        <button class="sub-tab-btn" data-sub-tab="sub1-cepillos">Cepillos</button>
+                        <button class="sub-tab-btn" data-sub-tab="sub1-enjuagues">Enjuagues</button>
+                    </div>
+
+                    <div class="tabs-content" id="sub-tabs-content-1">
+                        <div id="sub1-edad" class="tab-pane active">
+                            <h3>Técnicas por Edad</h3>
+                            <div class="card-grid">
+                                <div class="card">
+                                    <h4>👶 Niños (2–12 años)</h4>
+                                    <p>Pasta tamaño <strong>grano de arroz</strong>. Supervisión hasta los 8 años.</p>
+                                    <div class="video-responsive"><iframe src="https://www.youtube.com/embed/vcNAhUqH9U0" allowfullscreen></iframe></div>
+                                </div>
+                                <div class="card">
+                                    <h4>🧑‍🎓 B. Adolescentes (13–18 años)</h4>
+                                    <div style="margin-bottom: 20px;">
+                                        <p style="margin-bottom: 5px;">Cepillo suave o eléctrico.</p>
+                                        <p style="margin-bottom: 5px;">Interdentales si hay brackets.</p>
+                                        <p style="margin-bottom: 5px;">Técnica Bass modificada recomendada.</p>
+                                        <p style="margin-bottom: 5px;">Reducir presión (evitar abrasión).</p>
+                                    </div>
+                                    <div class="video-responsive"><iframe src="https://www.youtube.com/embed/DNA82YjdeQc" allowfullscreen></iframe></div>
+                                </div>
+                                <div class="card">
+                                    <h4>👵 Adultos Mayores</h4>
+                                    <p>Atender zonas de recesión. Limpieza de prótesis.</p>
+                                    <div class="video-responsive"><iframe src="https://www.youtube.com/embed/XroUbOEFHBs" allowfullscreen></iframe></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="sub1-metodos" class="tab-pane">
+                            <h3 style="text-align: center;">Métodos de Cepillado</h3>
+                            <p style="text-align: center; max-width: 800px; margin: 0 auto 30px; color: #555;">Domina la técnica perfecta. No todos los cepillados son iguales; elige el método que tu salud necesita.</p>
+                            
+                            <img src="https://www.colgate.com/content/dam/cp-sites/oral-care/oral-care-center/global/article/gillette/common/bass-method-brushing.jpg" alt="Técnica de Bass Modificada" class="dynamic-img">
+                            
+                            <div class="card-grid">
+                                <div class="card">
+                                    <h4>Bass Modificada</h4>
+                                    <p style="font-size: 0.9em; color: #666; margin-bottom: 10px;">La técnica estándar de oro. Enfocada en remover placa bacteriana del surco de la encía (45°), ideal para pacientes con <strong>gingivitis</strong>.</p>
+                                    <div class="video-responsive"><iframe src="https://www.youtube.com/embed/wOOnn17zyWo" allowfullscreen></iframe></div>
+                                </div>
+                                <div class="card">
+                                    <h4>Stillman</h4>
+                                    <p style="font-size: 0.9em; color: #666; margin-bottom: 10px;">Técnica de masaje y barrido. Estimula encías sanas sin dañar el tejido, perfecta para pacientes sin enfermedad periodontal.</p>
+                                    <div class="video-responsive"><iframe src="https://www.youtube.com/embed/VPgEcvAK044" allowfullscreen></iframe></div>
+                                </div>
+                                <div class="card">
+                                    <h4>Charters</h4>
+                                    <p style="font-size: 0.9em; color: #666; margin-bottom: 10px;">Enfoque interproximal. Ideal para pacientes con espacios abiertos u ortodoncia para limpiar entre dientes.</p>
+                                    <div class="video-responsive"><iframe src="https://www.youtube.com/embed/wOOnn17zyWo" allowfullscreen></iframe></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="sub1-hilo" class="tab-pane">
+                            <h3 style="text-align: center;">Uso de Hilo Dental</h3>
+                            <p style="text-align: center; max-width: 800px; margin: 0 auto 30px; color: #555;">El 40% de la superficie dental está entre tus dientes. Si no usas hilo, no estás limpiando la mitad de tu boca.</p>
+                            <img src="https://www.waterpik.com/oral-health/blog/how-to-floss/flossing-technique-step-by-step.jpg" alt="Técnica de Hilo Dental" class="dynamic-img">
+                            <h4 style="text-align: center; color: var(--color-secundario); margin-top: 30px;">Higiene Interproximal Fina</h4>
+                            <div class="video-responsive"><iframe src="https://www.youtube.com/embed/3sMpLB2fzKU" allowfullscreen></iframe></div>
+                            <h4 style="text-align:center; margin-top:40px; color: var(--color-secundario);">Para Espacios Abiertos y Brackets</h4>
+                            <p style="text-align: center; color: #666;">Los cepillos interdentales son esenciales en periodontitis y ortodoncia.</p>
+                            <div class="video-responsive"><iframe src="https://www.youtube.com/embed/pOk-O9DzyC8" allowfullscreen></iframe></div>
+                        </div>
+
+                        <div id="sub1-cepillos" class="tab-pane">
+                            <h3 style="text-align: center; margin-bottom: 20px;">Personalización Clínica</h3>
+                            <p style="text-align: center; margin-bottom: 40px; color: #555;">No existe un cepillo universal; cada condición requiere una herramienta específica.</p>
+                            <div class="producto-lista">
+                                <div class="producto-item" style="border-left-color: #4A90E2;">
+                                    <h4>🟦 Gingivitis</h4>
+                                    <p>Cepillo ultrasuave. Pasta CPC + Fluoruro.</p>
+                                </div>
+                                <div class="producto-item" style="border-left-color: #FF9800;">
+                                    <h4>🟧 Periodontitis</h4>
+                                    <p><strong>Interdentales</strong> obligatorios. Eléctrico (Oral-B Genius/iO).</p>
+                                </div>
+                                <div class="producto-item" style="border-left-color: #FFEB3B;">
+                                    <h4>🟨 Ortodoncia</h4>
+                                    <p>Cepillo V-Shape. Interdentales cilíndricos.</p>
+                                </div>
+                                <div class="producto-item" style="border-left-color: #4CAF50;">
+                                    <h4>🟩 Diabéticos</h4>
+                                    <p>Control de glucosa. Pasta Parodontax.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="sub1-enjuagues" class="tab-pane">
+                            <h3 style="text-align: center;">💧 Enjuagues Bucales</h3>
+                            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                                <h4 style="color: var(--color-texto-oscuro); font-weight: 500;">Recomendados y No Recomendados</h4>
+                                <p>Los colutorios son el complemento perfecto para tu higiene mecánica, pero no todos sirven para lo mismo. Aprende a distinguir entre los que curan, los que mantienen y los que solo disfrazan el problema.</p>
+                            </div>
+                            <div class="video-responsive" style="max-width: 280px; padding-bottom: 56.25%; margin: 20px auto;"> 
+                                <iframe src="https://www.youtube.com/embed/CIlVtt_z1r0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tablero2" class="tab-pane">
+                    <div class="tabs-nav" id="sub-tabs-nav-2">
+                        <button class="sub-tab-btn active" data-sub-tab="sub2-tabaco">Tabaco</button>
+                        <button class="sub-tab-btn" data-sub-tab="sub2-cepillos">Cepillos por Enf.</button>
+                        <button class="sub-tab-btn" data-sub-tab="sub2-necesidades">Especiales</button>
+                        <button class="sub-tab-btn" data-sub-tab="sub2-nutricion">Nutrición</button>
+                        <button class="sub-tab-btn" data-sub-tab="sub2-conductas">Conductas</button>
+                    </div>
+
+                    <div class="tabs-content" id="sub-tabs-content-2">
+                        <div id="sub2-tabaco" class="tab-pane active">
+                            <div class="card" style="text-align: center;">
+                                <h3>Cesación Tabáquica</h3>
+                                <p style="font-size: 1.1em; color: #555; margin-bottom: 20px;">
+                                    El tabaco disminuye la circulación, afecta la cicatrización y duplica el riesgo de periodontitis.
+                                </p>
+                                <h4 style="margin-top: 30px; color: var(--color-secundario);">Video sobre el desarrollo de la enfermedad</h4>
+                                <div class="video-responsive">
+                                    <iframe src="https://www.youtube.com/embed/CIV89iA37m0" allowfullscreen></iframe>
+                                </div>
+
+                                <h3 style="margin-top: 40px; border-bottom: 2px solid var(--color-principal); display: inline-block; padding-bottom: 10px;">Herramientas Recomendadas</h3>
+                                <div class="producto-lista" style="text-align: left; margin-top: 30px;">
+                                    <div class="producto-item">
+                                        <div style="text-align: center;"><img src="https://images.unsplash.com/photo-1600180984346-077893328748?auto=format&fit=crop&w=300&q=80" alt="Enjuague CHX"></div>
+                                        <h4 style="text-align: center;">Enjuague CHX 0.12%</h4>
+                                        <p style="text-align: center;">Uso por tiempos cortos (10–14 días) para desinfección intensiva.</p>
+                                    </div>
+                                    <div class="producto-item">
+                                        <div style="text-align: center;"><img src="https://images.unsplash.com/photo-1626895677644-98978870986f?auto=format&fit=crop&w=300&q=80" alt="Pasta CPC"></div>
+                                        <h4 style="text-align: center;">Pasta con CPC + Fluoruro</h4>
+                                        <p style="text-align: center;">Ejemplos: Colgate Total, PerioAid gel. Protección diaria.</p>
+                                    </div>
+                                    <div class="producto-item">
+                                        <div style="text-align: center;"><img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=300&q=80" alt="Interproximales"></div>
+                                        <h4 style="text-align: center;">Interproximales Mayores</h4>
+                                        <p style="text-align: center;">Para espacios con mayor acumulación de nicotina.</p>
+                                    </div>
+                                </div>
+
+                                <h3 style="margin-top: 40px; border-bottom: 2px solid var(--color-principal); display: inline-block; padding-bottom: 10px;">Sustitutos del Tabaquismo</h3>
+                                <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-top: 20px;">
+                                    <div class="card" style="padding: 20px; text-align: center;">
+                                        <img src="https://images.unsplash.com/photo-1577174883394-0268597e749e?auto=format&fit=crop&w=150&q=80" alt="Chicles" style="border-radius: 10px; margin-bottom: 10px;">
+                                        <h4>🍬 Chicles sin azúcar</h4>
+                                    </div>
+                                    <div class="card" style="padding: 20px; text-align: center;">
+                                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=150&q=80" alt="Tabletas" style="border-radius: 10px; margin-bottom: 10px;">
+                                        <h4>💊 Tabletas de nicotina</h4>
+                                    </div>
+                                    <div class="card" style="padding: 20px; text-align: center;">
+                                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=150&q=80" alt="App SmokeFree" style="border-radius: 10px; margin-bottom: 10px;">
+                                        <h4>📱 App SmokeFree</h4>
+                                    </div>
+                                </div>
+
+                                <h3 style="margin-top: 40px; border-bottom: 2px solid var(--color-principal); display: inline-block; padding-bottom: 10px;">Cepillo Ideal para Fumadores</h3>
+                                <div class="producto-lista" style="text-align: left; margin-top: 20px;">
+                                    <div class="producto-item">
+                                        <div style="text-align: center;"><img src="https://images.unsplash.com/photo-1508615312897-6a8813456c62?auto=format&fit=crop&w=300&q=80" alt="Cepillo Suave"></div>
+                                        <h4 style="text-align: center;">Manual Suave/Medio</h4>
+                                        <p style="text-align: center;">Cabeza pequeña para acceder a zonas manchadas.</p>
+                                    </div>
+                                    <div class="producto-item">
+                                        <div style="text-align: center;"><img src="https://images.unsplash.com/photo-1553556735-373307455c32?auto=format&fit=crop&w=300&q=80" alt="Oral-B Electrico"></div>
+                                        <h4 style="text-align: center;">Eléctrico Rotatorio</h4>
+                                        <p style="text-align: center;">Tipo Oral-B PRO o GENIUS para limpieza profunda.</p>
+                                    </div>
+                                    <div class="producto-item">
+                                        <div style="text-align: center;"><img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=300&q=80" alt="Interdentales"></div>
+                                        <h4 style="text-align: center;">Interdentales Metálicos</h4>
+                                        <p style="text-align: center;">TePe o Interprox para espacios difíciles.</p>
+                                    </div>
+                                </div>
+
+                                <h3 style="margin-top: 40px; border-bottom: 2px solid var(--color-principal); display: inline-block; padding-bottom: 10px;">Pasta Dental Recomendada</h3>
+                                <p style="margin-bottom: 20px;">Con <strong>CPC + fluoruro + zinc</strong> para controlar manchas y halitosis.</p>
+                                <div class="producto-lista" style="text-align: left;">
+                                    <div class="producto-item">
+                                        <div style="text-align: center;"><img src="https://images.unsplash.com/photo-1559591937-024dc0f37c34?auto=format&fit=crop&w=300&q=80" alt="PerioAid Gel"></div>
+                                        <h4 style="text-align: center;">PerioAid Gel</h4>
+                                    </div>
+                                    <div class="producto-item">
+                                        <div style="text-align: center;"><img src="https://images.unsplash.com/photo-1627664819818-e147d6221422?auto=format&fit=crop&w=300&q=80" alt="Colgate Total"></div>
+                                        <h4 style="text-align: center;">Colgate Total</h4>
+                                    </div>
+                                    <div class="producto-item">
+                                        <div style="text-align: center;"><img src="https://images.unsplash.com/photo-1571772996211-2f02c9727629?auto=format&fit=crop&w=300&q=80" alt="Oral-B Detox"></div>
+                                        <h4 style="text-align: center;">Oral-B Encías Detox</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="sub2-cepillos" class="tab-pane">
+                            <div class="card" style="text-align: center; margin-bottom: 30px;">
+                                <h3>Tipos de Cepillos Según Enfermedad</h3>
+                                <p style="color: #555;">Guía de prescripción personalizada: elige la herramienta exacta para tu condición clínica.</p>
+                            </div>
+
+                            <div class="producto-lista" style="gap: 30px;">
+                                <div class="producto-item" style="border-left: 6px solid #4A90E2; padding: 30px;">
+                                    <h3 style="text-align: center; color: #4A90E2; margin-top: 0;">1. Gingivitis</h3>
+                                    <p style="text-align: center; font-style: italic; margin-bottom: 20px;">Características: Encías rojas, dolorosas, sangrado.</p>
+                                    
+                                    <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+                                        <div style="flex: 1; min-width: 150px; text-align: center;">
+                                            <img src="https://images.unsplash.com/photo-1508615312897-6a8813456c62?auto=format&fit=crop&w=300&q=80" alt="Curaprox">
+                                            <h4>Cepillo Manual</h4>
+                                            <p style="font-size: 0.9em;">Suave / Extra suave. Cabeza pequeña. (Curaprox 5460, TePe Soft).</p>
+                                        </div>
+                                        <div style="flex: 1; min-width: 150px; text-align: center;">
+                                            <img src="https://images.unsplash.com/photo-1553556735-373307455c32?auto=format&fit=crop&w=300&q=80" alt="Oral B Pro">
+                                            <h4>Eléctrico</h4>
+                                            <p style="font-size: 0.9em;">Oral-B PRO 1000. Control de presión.</p>
+                                        </div>
+                                        <div style="flex: 1; min-width: 150px; text-align: center;">
+                                            <img src="https://images.unsplash.com/photo-1559591937-024dc0f37c34?auto=format&fit=crop&w=300&q=80" alt="Pasta CPC">
+                                            <h4>Pasta</h4>
+                                            <p style="font-size: 0.9em;">CPC + fluoruro (PerioAid, Colgate Total).</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="producto-item" style="border-left: 6px solid #FF9800; padding: 30px;">
+                                    <h3 style="text-align: center; color: #FF9800; margin-top: 0;">🟧 2. Periodontitis</h3>
+                                    <p style="text-align: center; font-style: italic; margin-bottom: 20px;">Características: Bolsas, movilidad, inflamación profunda.</p>
+                                    
+                                    <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+                                        <div style="flex: 1; min-width: 150px; text-align: center;">
+                                            <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=300&q=80" alt="TePe Interdental">
+                                            <h4>MUST: Interdental</h4>
+                                            <p style="font-size: 0.9em;">Tamaños específicos (TePe naranja–verde). Obligatorio.</p>
+                                        </div>
+                                        <div style="flex: 1; min-width: 150px; text-align: center;">
+                                            <img src="https://images.unsplash.com/photo-1553556735-373307455c32?auto=format&fit=crop&w=300&q=80" alt="Oral B Genius">
+                                            <h4>Eléctrico</h4>
+                                            <p style="font-size: 0.9em;">Oral-B Genius o iO (sensores + rotación).</p>
+                                        </div>
+                                        <div style="flex: 1; min-width: 150px; text-align: center;">
+                                            <img src="https://images.unsplash.com/photo-1571772996211-2f02c9727629?auto=format&fit=crop&w=300&q=80" alt="PerioAid Gel">
+                                            <h4>Pasta</h4>
+                                            <p style="font-size: 0.9em;">PerioAid Gel / Parodontax Encías.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="producto-item" style="border-left: 6px solid #FFEB3B; padding: 30px;">
+                                    <h3 style="text-align: center; color: #FBC02D; margin-top: 0;">🟨 3. Ortodoncia</h3>
+                                    
+                                    <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+                                        <div style="flex: 1; min-width: 150px; text-align: center;">
+                                            <img src="https://images.unsplash.com/photo-1559591937-e179e0231883?auto=format&fit=crop&w=300&q=80" alt="V Shape Brush">
+                                            <h4>Cepillo V-Shape</h4>
+                                            <p style="font-size: 0.9em;">Corte en V para brackets.</p>
+                                        </div>
+                                        <div style="flex: 1; min-width: 150px; text-align: center;">
+                                            <img src="https://images.unsplash.com/photo-1626895677644-98978870986f?auto=format&fit=crop&w=300&q=80" alt="Cilindrico">
+                                            <h4>Interproximal</h4>
+                                            <p style="font-size: 0.9em;">Cilíndricos para el arco.</p>
+                                        </div>
+                                        <div style="flex: 1; min-width: 150px; text-align: center;">
+                                            <img src="https://images.unsplash.com/photo-1559591937-024dc0f37c34?auto=format&fit=crop&w=300&q=80" alt="Fluoruro">
+                                            <h4>Pasta</h4>
+                                            <p style="font-size: 0.9em;">Fluoruro 1450–5000 ppm (prevención manchas blancas).</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="producto-item" style="border-left: 6px solid #4CAF50; padding: 30px;">
+                                    <h3 style="text-align: center; color: #4CAF50; margin-top: 0;">🟩 4. Pacientes Diabéticos</h3>
+                                    
+                                    <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+                                        <div style="flex: 1; min-width: 150px; text-align: center;">
+                                            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=300&q=80" alt="Control Glucosa">
+                                            <h4>Control Sistémico</h4>
+                                            <p style="font-size: 0.9em;">Control de glucosa para evitar inflamación.</p>
+                                        </div>
+                                        <div style="flex: 1; min-width: 150px; text-align: center;">
+                                            <img src="https://images.unsplash.com/photo-1571772996211-2f02c9727629?auto=format&fit=crop&w=300&q=80" alt="Parodontax">
+                                            <h4>Pasta & Enjuague</h4>
+                                            <p style="font-size: 0.9em;">Parodontax + Enjuague CPC con Fluoruro.</p>
+                                        </div>
+                                        <div style="flex: 1; min-width: 150px; text-align: center;">
+                                            <img src="https://images.unsplash.com/photo-1508615312897-6a8813456c62?auto=format&fit=crop&w=300&q=80" alt="Cepillo Suave">
+                                            <h4>Cepillo</h4>
+                                            <p style="font-size: 0.9em;">Suave – medio suave. Interdentales obligatorios.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="producto-item" style="border-left: 6px solid #9C27B0; padding: 30px;">
+                                    <h3 style="text-align: center; color: #9C27B0; margin-top: 0;">🟪 5. Xerostomía (Boca Seca)</h3>
+                                    
+                                    <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+                                        <div style="flex: 1; min-width: 150px; text-align: center;">
+                                            <img src="https://images.unsplash.com/photo-1553556735-373307455c32?auto=format&fit=crop&w=300&q=80" alt="Sonicare">
+                                            <h4>Cepillo</h4>
+                                            <p style="font-size: 0.9em;">Extra suave o Eléctrico Sonicare (menos fricción).</p>
+                                        </div>
+                                        <div style="flex: 1; min-width: 150px; text-align: center;">
+                                            <img src="https://images.unsplash.com/photo-1559591937-024dc0f37c34?auto=format&fit=crop&w=300&q=80" alt="Biotene">
+                                            <h4>Pasta Hidratante</h4>
+                                            <p style="font-size: 0.9em;">Con xilitol + hidratantes (Biotene, SaliActive).</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="producto-item" style="border-left: 6px solid #F44336; padding: 30px;">
+                                    <h3 style="text-align: center; color: #F44336; margin-top: 0;">🟥 6. Abrasión o Sensibilidad</h3>
+                                    
+                                    <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+                                        <div style="flex: 1; min-width: 150px; text-align: center;">
+                                            <img src="https://images.unsplash.com/photo-1508615312897-6a8813456c62?auto=format&fit=crop&w=300&q=80" alt="Cepillo Extra Suave">
+                                            <h4>Cepillo</h4>
+                                            <p style="font-size: 0.9em;">Extra suave. Aplicar técnica modificada (sin frotar).</p>
+                                        </div>
+                                        <div style="flex: 1; min-width: 150px; text-align: center;">
+                                            <img src="https://images.unsplash.com/photo-1571772996211-2f02c9727629?auto=format&fit=crop&w=300&q=80" alt="Sensodyne Repair">
+                                            <h4>Pasta Reparadora</h4>
+                                            <p style="font-size: 0.9em;">Sensodyne Repair, Elmex Sensitive.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div id="sub2-necesidades" class="tab-pane">
+                            <div class="card" style="text-align: center; margin-bottom: 30px;">
+                                <h3>Pacientes con Necesidades Especiales</h3>
+                                <p style="color: #555;">Estrategias y herramientas para facilitar la higiene en pacientes con artritis, movilidad reducida, limitaciones de apertura, discapacidad o dependencia.</p>
+                            </div>
+
+                            <h3 style="text-align: center; margin-top: 30px; border-bottom: 2px solid var(--color-principal); display: inline-block; padding-bottom: 10px;">Cepillos Recomendados</h3>
+                            <div class="producto-lista" style="text-align: left; margin-top: 20px;">
+                                <div class="producto-item">
+                                    <div style="text-align: center;"><img src="https://images.unsplash.com/photo-1618357007790-2c70094e92d0?auto=format&fit=crop&w=300&q=80" alt="Mango Engrosado"></div>
+                                    <h4 style="text-align: center;">Mangos Engrosados</h4>
+                                    <p style="text-align: center;">Adaptadores de goma espuma para facilitar el agarre en casos de artritis.</p>
+                                </div>
+                                <div class="producto-item">
+                                    <div style="text-align: center;"><img src="https://images.unsplash.com/photo-1553556735-373307455c32?auto=format&fit=crop&w=300&q=80" alt="Cepillo Electrico"></div>
+                                    <h4 style="text-align: center;">Eléctricos (Oral-B iO / Sonicare)</h4>
+                                    <p style="text-align: center;">Hacen el trabajo por ti. Fáciles y eficientes.</p>
+                                </div>
+                                <div class="producto-item">
+                                    <div style="text-align: center;"><img src="https://images.unsplash.com/photo-1559591937-e179e0231883?auto=format&fit=crop&w=300&q=80" alt="Triple Cabeza"></div>
+                                    <h4 style="text-align: center;">Triple Cabeza</h4>
+                                    <p style="text-align: center;">"Surround": Limpian 3 caras del diente simultáneamente.</p>
+                                </div>
+                                <div class="producto-item">
+                                    <div style="text-align: center;"><img src="https://images.unsplash.com/photo-1609840114035-1c29046a8028?auto=format&fit=crop&w=300&q=80" alt="Unipenacho"></div>
+                                    <h4 style="text-align: center;">Un Solo Penacho</h4>
+                                    <p style="text-align: center;">TePe Compact Tuft. Ideal para que el cuidador limpie zonas difíciles.</p>
+                                </div>
+                            </div>
+
+                            <h3 style="text-align: center; margin-top: 40px; border-bottom: 2px solid var(--color-principal); display: inline-block; padding-bottom: 10px;">Pasta y Adaptaciones</h3>
+                            <div class="card-grid" style="margin-top: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                                <div class="card" style="text-align: center;">
+                                    <img src="https://images.unsplash.com/photo-1559591937-024dc0f37c34?auto=format&fit=crop&w=300&q=80" style="border-radius: 50%; margin-bottom: 15px; width: 150px; height: 150px; object-fit: cover;" alt="Pasta Suave">
+                                    <h4>Pasta Baja Abrasión</h4>
+                                    <p>Evita daños por fuerza excesiva (Sensodyne Protect & Repair, Elmex Sensitive).</p>
+                                </div>
+                                <div class="card" style="text-align: center;">
+                                    <img src="https://images.unsplash.com/photo-1618357007790-2c70094e92d0?auto=format&fit=crop&w=300&q=80" style="border-radius: 50%; margin-bottom: 15px; width: 150px; height: 150px; object-fit: cover;" alt="Adaptadores">
+                                    <h4>Herramientas Adaptativas</h4>
+                                    <ul style="list-style: none; padding: 0; color: #555;">
+                                        <li>✅ Soportes de muñeca</li>
+                                        <li>✅ Sensores de presión</li>
+                                        <li>✅ Accesorios de mango</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="sub2-nutricion" class="tab-pane">
+                            <div class="card" style="text-align: center; margin-bottom: 30px;">
+                                <h3>Nutrición y Salud Gingival</h3>
+                                <p>Alimentos beneficiosos, dieta antiinflamatoria, suplementos basados en evidencia.</p>
+                            </div>
+
+                            <h3 style="text-align: center; margin-top: 30px; border-bottom: 2px solid var(--color-principal); display: inline-block; padding-bottom: 10px;">Guía Antiinflamatoria</h3>
+                            <p style="text-align: center; color: #555; max-width: 800px; margin: 0 auto 30px;">Una dieta baja en azúcares y rica en nutrientes es clave para reducir la inflamación sistémica que afecta tus encías.</p>
+                            <img src="https://domf5oio6qrcr.cloudfront.net/medialibrary/5292/h0618g16207256860049.jpg" alt="Guía dieta antiinflamatoria" class="dynamic-img" style="display: block; margin: 0 auto; max-width: 800px;">
+
+                            <h3 style="text-align: center; margin-top: 50px; border-bottom: 2px solid var(--color-principal); display: inline-block; padding-bottom: 10px;">Top Foods para Encías Saludables</h3>
+                            <div class="producto-lista" style="text-align: left; margin-top: 20px;">
+                                <div class="producto-item">
+                                    <div style="text-align: center;"><img src="https://images.pexels.com/photos/1417945/pexels-photo-1417945.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Té Verde"></div>
+                                    <h4 style="text-align: center;">Té Verde</h4>
+                                    <p style="text-align: center;">Contiene catequinas, antioxidantes poderosos que combaten la inflamación y reducen las bacterias periodontales.</p>
+                                </div>
+                                <div class="producto-item">
+                                    <div style="text-align: center;"><img src="https://images.unsplash.com/photo-1571212515416-f223d63001e5?auto=format&fit=crop&w=600&q=80" alt="Yogur Natural"></div>
+                                    <h4 style="text-align: center;">Yogur Natural</h4>
+                                    <p style="text-align: center;">Sus probióticos ayudan a equilibrar la flora bucal, desplazando a las bacterias nocivas que causan mal aliento.</p>
+                                </div>
+                                <div class="producto-item">
+                                    <div style="text-align: center;"><img src="https://images.pexels.com/photos/4397739/pexels-photo-4397739.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Nueces"></div>
+                                    <h4 style="text-align: center;">Nueces</h4>
+                                    <p style="text-align: center;">Fuente vegetal de Omega-3 y fibra, esenciales para reducir la respuesta inflamatoria del cuerpo.</p>
+                                </div>
+                                <div class="producto-item">
+                                    <div style="text-align: center;"><img src="https://images.unsplash.com/photo-1499125562588-29fb8a56b5d5?auto=format&fit=crop&w=600&q=80" alt="Pescado Omega 3"></div>
+                                    <h4 style="text-align: center;">Pescados (Omega 3)</h4>
+                                    <p style="text-align: center;">Salmón o atún aportan ácidos grasos que aceleran la curación y reducen la profundidad de las bolsas.</p>
+                                </div>
+                                <div class="producto-item">
+                                    <div style="text-align: center;"><img src="https://images.pexels.com/photos/5945756/pexels-photo-5945756.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Frutas Cítricas"></div>
+                                    <h4 style="text-align: center;">Frutas Cítricas</h4>
+                                    <p style="text-align: center;">La Vitamina C es vital para la producción de colágeno, ayudando a reparar y mantener la firmeza de las encías.</p>
+                                </div>
+                            </div>
+
+                            <h3 style="text-align: center; margin-top: 50px; border-bottom: 2px solid var(--color-principal); display: inline-block; padding-bottom: 10px;">Pacientes Diabéticos</h3>
+                            <div class="card" style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 30px; align-items: center; justify-content: center;">
+                                <img src="https://images.ctfassets.net/p0qf7j048i0q/4D1y6J1y6J1y6J1y6J1y6J/image.jpg" alt="Control Glucosa" style="max-width: 400px; width: 100%; border-radius: 15px; box-shadow: var(--sombra-suave);">
+                                <div style="flex: 1; min-width: 300px;">
+                                    <ul style="list-style: none; padding: 0;">
+                                        <li style="margin-bottom: 15px; font-size: 1.1em;">✅ <strong>Control estricto de glucosa:</strong> Niveles altos de azúcar en sangre alimentan bacterias nocivas.</li>
+                                        <li style="margin-bottom: 15px; font-size: 1.1em;">🚫 <strong>Evitar azúcares simples:</strong> Previenen picos de insulina que agravan la inflamación.</li>
+                                        <li style="margin-bottom: 15px; font-size: 1.1em;">🥦 <strong>Más antioxidantes:</strong> Incrementa el consumo de alimentos ricos en antioxidantes para combatir el estrés oxidativo típico de la diabetes.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div id="sub2-conductas" class="tab-pane">
+                            <div class="card" style="text-align: center; margin-bottom: 30px;">
+                                <h3>Impacto de los Hábitos en tu Salud Oral</h3>
+                                <p style="color: #555;">Pequeñas acciones diarias pueden transformar la salud de tus encías.</p>
+                            </div>
+
+                            <div class="producto-lista" style="gap: 30px;">
+                                <div class="producto-item">
+                                    <div style="text-align: center;"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=300&q=80" alt="Cafe"></div>
+                                    <h4 style="text-align: center;">1. Consumo Elevado de Café</h4>
+                                    <p style="text-align: center; font-style: italic; color: #777;">Problema: Manchas, acidez (erosión), halitosis.</p>
+                                    <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+                                    <ul style="padding-left: 20px;">
+                                        <li><strong>Cepillo Suave:</strong> Para no desgastar el esmalte debilitado por el ácido.</li>
+                                        <li><strong>Pasta Blanqueadora Suave:</strong> (Oral-B Luminos, Colgate Luminous). Remueve manchas sin abrasión.</li>
+                                        <li><strong>Enjuague CPC:</strong> Controla el mal aliento.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="producto-item">
+                                    <div style="text-align: center;"><img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=300&q=80" alt="Alcohol"></div>
+                                    <h4 style="text-align: center;">2. Alcohol Frecuente</h4>
+                                    <p style="text-align: center; font-style: italic; color: #777;">Problema: Deshidratación, acidez, aumento de placa.</p>
+                                    <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+                                    <ul style="padding-left: 20px;">
+                                        <li><strong>Pasta Hidratante (Biotene):</strong> Compensa la sequedad bucal.</li>
+                                        <li><strong>Enjuague Sin Alcohol:</strong> Evita irritar más las mucosas.</li>
+                                        <li><strong>Agua entre bebidas:</strong> Neutraliza el pH ácido inmediatamente.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="producto-item">
+                                    <div style="text-align: center;"><img src="https://images.unsplash.com/photo-1604607097495-p0f916759849?auto=format&fit=crop&w=300&q=80" alt="Morderse las uñas"></div>
+                                    <h4 style="text-align: center;">3. Morderse las Uñas</h4>
+                                    <p style="text-align: center; font-style: italic; color: #777;">Problema: Microfracturas, desgaste dental, bacterias.</p>
+                                    <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+                                    <ul style="padding-left: 20px;">
+                                        <li><strong>Pasta Desensibilizante:</strong> Protege el esmalte fracturado.</li>
+                                        <li><strong>Terapia Conductual:</strong> Para tratar la causa raíz (estrés/ansiedad).</li>
+                                        <li><strong>Apps Habit Trackers:</strong> Ayuda digital para dejar el hábito.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="producto-item">
+                                    <div style="text-align: center;"><img src="https://images.unsplash.com/photo-1520935543666-857dd2392742?auto=format&fit=crop&w=300&q=80" alt="Bruxismo"></div>
+                                    <h4 style="text-align: center;">4. Bruxismo</h4>
+                                    <p style="text-align: center; font-style: italic; color: #777;">Problema: Desgaste severo, fracturas, dolor articular.</p>
+                                    <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+                                    <ul style="padding-left: 20px;">
+                                        <li><strong>Guarda Nocturna:</strong> Barrera física indispensable.</li>
+                                        <li><strong>Pasta para Abrasión:</strong> (Elmex, Sensodyne) Remineraliza el diente.</li>
+                                        <li><strong>Enjuague Fluoruro:</strong> Fortalece contra la sensibilidad.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="card" style="margin-top: 40px; text-align: center;">
+                                <h3>Herramientas Adaptativas</h3>
+                                <p style="margin-bottom: 20px;">Tecnología para facilitar tu higiene diaria.</p>
+                                <div class="video-responsive">
+                                    <iframe src="https://www.youtube.com/embed/placeholder_reel_adaptativas" title="Tutorial Herramientas Adaptativas" allowfullscreen></iframe>
+                                </div>
+                                <p style="font-size: 0.9em; color: #555;">*Recomendación clínica: Pacientes con poca movilidad en manos deben usar cepillos eléctricos con temporizador para asegurar el tiempo correcto de cepillado sin fatiga.*</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tablero3" class="tab-pane">
+                    <div class="card-grid">
+                        <div class="card">
+                            <h3>Playlist Relajante</h3>
+                            <div class="video-responsive"><iframe src="https://www.youtube.com/embed/qjEb52fP7ZM" allowfullscreen></iframe></div>
+                        </div>
+                        <div class="card">
+                            <h3>Apps Recomendadas</h3>
+                            <p><strong>BRUSH DJ:</strong> Música para cepillado.</p>
+                            <p><strong>Brushout:</strong> Calendario de higiene.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonios" class="contenedor" style="padding: 60px 20px;">
+        <h2 class="titulo-grande">⭐ Historias de Éxito</h2>
+        <div class="carrusel-contenedor">
+            <div class="testimonio-card">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Andrea" class="testimonio-img">
+                <p class="testimonio-texto">“Nunca entendí qué era la enfermedad periodontal hasta que aquí me lo explicaron con imágenes claras.”</p>
+                <div class="testimonio-nombre">Andrea, 39 años</div>
+            </div>
+            <div class="testimonio-card">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Luis" class="testimonio-img">
+                <p class="testimonio-texto">“Mis encías dejaron de sangrar en 2 semanas siguiendo las guías personalizadas.”</p>
+                <div class="testimonio-nombre">Luis, 54 años</div>
+            </div>
+            <div class="testimonio-card">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Karina" class="testimonio-img">
+                <p class="testimonio-texto">“El dolor disminuyó muchísimo con la fisioterapia oral y ahora me siento segura.”</p>
+                <div class="testimonio-nombre">Karina, 42 años</div>
+            </div>
+            <div class="testimonio-card">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Mateo" class="testimonio-img">
+                <p class="testimonio-texto">“Puedo ver mis avances y descargar mis ejercicios sin internet. Muy útil.”</p>
+                <div class="testimonio-nombre">Mateo, 33 años</div>
+            </div>
+            <div class="testimonio-card">
+                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Sofía" class="testimonio-img">
+                <p class="testimonio-texto">“La inflamación desapareció por completo gracias a los cepillos interdentales.”</p>
+                <div class="testimonio-nombre">Sofía, 28 años</div>
+            </div>
+            <div class="testimonio-card">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Carlos" class="testimonio-img">
+                <p class="testimonio-texto">“Excelente atención y herramientas muy útiles para el cuidado diario.”</p>
+                <div class="testimonio-nombre">Carlos, 45 años</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" style="background-color: #FFF; padding: 60px 0;">
+        <div class="contenedor">
+            <h2 class="titulo-grande">📍 Ubicación y Contacto</h2>
+            <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
+                
+                <div class="card">
+                    <h3>Información de Contacto</h3>
+                    <div class="contacto-detalle">
+                        <div class="contacto-item">
+                            <span class="contacto-icono">📍</span>
+                            <div>
+                                <strong>Clínica Odontológica USFQ</strong><br>
+                                Av. Interoceánica y Diego de Robles<br>
+                                Cumbayá, Quito - Ecuador
+                            </div>
+                        </div>
+                        <div class="contacto-item">
+                            <span class="contacto-icono">📞</span>
+                            <div>
+                                <strong>Teléfono:</strong> (02) 297-1700<br>
+                                <strong>WhatsApp:</strong> +593 99 123 4567
+                            </div>
+                        </div>
+                        <div class="contacto-item">
+                            <span class="contacto-icono">📧</span>
+                            <div>
+                                <strong>Correo:</strong> salud@periodoncia.com
+                            </div>
+                        </div>
+                        <div class="contacto-item">
+                            <span class="contacto-icono">🕒</span>
+                            <div>
+                                <strong>Lun - Vie:</strong> 8h00 a 19h00<br>
+                                <strong>Sábados:</strong> 8h00 a 13h00
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-container" style="justify-content: flex-start;">
+                        <a href="https://wa.me/qr/GTII534MCB24M1" class="btn btn-principal" target="_blank">Agendar Cita</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Mapa de Ubicación</h3>
+                    <div style="width: 100%; height: 300px; background-color: #EEE; border-radius: 15px; display: flex; align-items: center; justify-content: center; color: #777;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.797126130453!2d-78.4357286852462!3d-0.1970729998565158!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59a1674a27343%3A0x6b6d0e6c6d0e6c6d!2sUniversidad%20San%20Francisco%20de%20Quito!5e0!3m2!1ses!2sec!4v1625600000000!5m2!1ses!2sec" width="100%" height="100%" style="border:0; border-radius: 15px;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer style="background-color: var(--color-secundario); color: #FFF; text-align: center; padding: 40px 20px;">
+        <p>© 2025 Espacio de Salud Periodontal.</p>
+        <p style="font-size: 0.9em; opacity: 0.8;">Diseño Vanguardista y Dinámico</p>
+    </footer>
+
+    <script>
+        // LOGICA DE TABS
+        function setupTabs(navId, contentId) {
+            const nav = document.getElementById(navId);
+            const content = document.getElementById(contentId);
+            if (!nav || !content) return;
+
+            nav.addEventListener('click', (e) => {
+                const target = e.target.closest('button');
+                if (target) {
+                    const tabName = target.getAttribute('data-tab') || target.getAttribute('data-sub-tab');
+                    
+                    Array.from(nav.querySelectorAll('button')).forEach(btn => btn.classList.remove('active'));
+                    Array.from(content.querySelectorAll('.tab-pane')).forEach(pane => pane.classList.remove('active'));
+
+                    target.classList.add('active');
+                    const activePane = document.getElementById(tabName);
+                    if (activePane) activePane.classList.add('active');
+                }
+            });
+        }
+
+        setupTabs('main-tabs-nav', 'main-tabs-content');
+        setupTabs('sub-tabs-nav-1', 'sub-tabs-content-1');
+        setupTabs('sub-tabs-nav-2', 'sub-tabs-content-2');
+
+        // REDIRECCION A CHATGPT
+        function abrirChatIA() { 
+            window.open('https://chatgpt.com/', '_blank'); 
+        }
+    </script>
+</body>
+</html>
